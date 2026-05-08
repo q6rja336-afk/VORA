@@ -1,13 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl     = process.env.NEXT_PUBLIC_SUPABASE_URL     ?? 'https://placeholder.supabase.co';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? 'placeholder-key';
+const supabaseUrl     = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-const isConfigured =
-  supabaseUrl !== 'https://placeholder.supabase.co' &&
-  supabaseAnonKey !== 'placeholder-key';
+const isConfigured = !!supabaseUrl && !!supabaseAnonKey && supabaseUrl.includes('supabase.co');
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = isConfigured 
+  ? createClient(supabaseUrl!, supabaseAnonKey!)
+  : createClient('https://placeholder.supabase.co', 'placeholder-key');
 
 // ─── Continue Watching ───────────────────────────────────────────────────────
 
