@@ -5,13 +5,6 @@ const nextConfig = {
       { protocol: 'https', hostname: '**' },
     ],
   },
-  // Ignore lint and typescript errors during build for rapid deployment
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   // Headers for PWA
   async headers() {
     return [
