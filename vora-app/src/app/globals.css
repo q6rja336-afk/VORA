@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ─── CSS Custom Properties (VORA Design Tokens) ─────────────────────────── */
+:root {
+  /* Surfaces */
+  --surface:                   #12131c;
+  --surface-dim:               #12131c;
+  --surface-bright:            #383842;
+  --surface-container-lowest:  #0d0e16;
+  --surface-container-low:     #1a1b24;
+  --surface-container:         #1e1f28;
+  --surface-container-high:    #292933;
+  --surface-container-highest: #34343e;
+
+  /* On-surface */
+  --on-surface:         #e3e1ee;
+  --on-surface-variant: #c5c5d8;
+
+  /* Outline */
+  --outline:         #8f8fa1;
+  --outline-variant: #454655;
+
+  /* Primary (New Brand Blue: #5565af) */
+  --primary:           #a8b3e5;
+  --on-primary:        #00149f;
+  --primary-container: #5565af;
+  --on-primary-container: #fefaff;
+  --inverse-primary:   #3e4c8c;
+
+  /* Secondary (Original Green: #4dc57b) */
+  --secondary:           #a3dec3;
+  --secondary-container: #4dc57b;
+  --on-secondary-container: #ffffff;
+
+  /* Tertiary (Warm Accent) */
+  --tertiary:           #ffb692;
+  --tertiary-container: #c25200;
+
+  /* Background */
+  --background:    #12131c;
+  --on-background: #e3e1ee;
+
+  /* Typography */
+  --font-arabic: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-inter:  'Inter', system-ui, sans-serif;
+
+  /* Spacing */
+  --unit:        8px;
+  --margin-main: 24px;
+  --gutter-grid: 16px;
+  --stack-sm:    12px;
+  --stack-md:    24px;
+  --stack-lg:    40px;
+
+  /* Radius */
+  --radius-sm:   4px;
+  --radius:      8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* Glassmorphism */
+  --glass-bg:     rgba(30, 31, 40, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur:   24px;
+
+  /* Cinematic shadow */
+  --shadow-ambient: 0 8px 64px rgba(10, 12, 30, 0.8);
+  --shadow-glow:    0 0 40px rgba(85, 101, 175, 0.25);
+}
+
+/* ─── Reset & Base ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-arabic);
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--outline); }
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(85, 101, 175, 0.4);
+  color: #fff;
+}
+
+/* ─── Glassmorphism Utility ──────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  background: rgba(13, 14, 22, 0.75);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Cinematic Glow ─────────────────────────────────────────────────────── */
+.glow-blue {
+  box-shadow: 0 0 32px rgba(85, 101, 175, 0.4), 0 0 8px rgba(85, 101, 175, 0.2);
+}
+.glow-text-blue {
+  text-shadow: 0 0 30px rgba(85, 101, 175, 0.7);
+}
+
+/* ─── Chip ───────────────────────────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-inter);
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--on-surface-variant);
+  white-space: nowrap;
+}
+.chip-primary {
+  background: rgba(85, 101, 175, 0.18);
+  border-color: rgba(85, 101, 175, 0.35);
+  color: var(--primary);
+}
+
+/* ─── Gradient Overlays ──────────────────────────────────────────────────── */
+.gradient-bottom {
+  background: linear-gradient(to top, var(--background) 0%, transparent 100%);
+}
+.gradient-cinematic {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(18, 19, 28, 0.3) 40%,
+    rgba(18, 19, 28, 0.85) 75%,
+    var(--background) 100%
+  );
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(85, 101, 175, 0.3); }
+  50%       { box-shadow: 0 0 40px rgba(85, 101, 175, 0.6); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-fade-up  { animation: fadeInUp  0.6s ease both; }
+.animate-scale-in { animation: scaleIn   0.4s ease both; }
+.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+
+/* ─── Skeleton Loader ─────────────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-container-low) 25%,
+    var(--surface-container-high) 50%,
+    var(--surface-container-low) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ─── Forced Landscape (Mobile) ──────────────────────────────────────────── */
+.player-fullscreen-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  .force-landscape-overlay {
+    display: flex !important;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--on-surface);
+    font-family: var(--font-inter);
+  }
+}
+
+/* ─── Swiper Custom ──────────────────────────────────────────────────────── */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--primary) !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--primary-container) !important;
+}
+
+/* ─── Loader ─────────────────────────────────────────────────────────────── */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(85, 101, 175, 0.1);
+  border-left-color: var(--primary-container);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ─── Focus Visible ──────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--primary-container);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}

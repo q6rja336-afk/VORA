@@ -1,0 +1,11 @@
+Your selected colors:
+
+    Text: #f5f4f5 - rgb(245, 244, 245) - hsl(300, 5%, 96%)
+    Background: #0c0c16 - rgb(12, 12, 22) - hsl(240, 29%, 7%)
+    Primary: #4f61ff - rgb(79, 97, 255) - hsl(234, 100%, 65%)
+    Secondary: #14141e - rgb(20, 20, 30) - hsl(240, 20%, 10%)
+    Accent: #4dc57b - rgb(77, 197, 123) - hsl(143, 51%, 54%)
+
+Realtime Colors link for selected colors: https://www.realtimecolors.com/?colors=f5f4f5-0c0c16-4f61ff-14141e-4dc57b&fonts=Inter-Inter
+
+Thanks for using RealtimeColors.com!
