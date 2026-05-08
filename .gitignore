@@ -1,22 +1,22 @@
 # dependencies
-vora-app/node_modules
-vora-app/.pnp
-vora-app/.pnp.*
-vora-app/.yarn/*
-!vora-app/.yarn/patches
-!vora-app/.yarn/plugins
-!vora-app/.yarn/releases
-!vora-app/.yarn/versions
+node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
 # testing
-vora-app/coverage
+/coverage
 
 # next.js
-vora-app/.next/
-vora-app/out/
+/.next/
+/out/
 
 # production
-vora-app/build
+/build
 
 # misc
 .DS_Store
@@ -36,8 +36,8 @@ yarn-error.log*
 .env.production.local
 
 # vercel
-vora-app/.vercel
+/.vercel
 
 # typescript
 *.tsbuildinfo
-vora-app/next-env.d.ts
+next-env.d.ts
