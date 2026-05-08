@@ -6,6 +6,8 @@ import ContinueWatching from '@/components/ContinueWatching';
 import Footer from '@/components/Footer';
 import { getAllContent, getContinueWatching } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 // Helper to map Supabase data to our ContentItem interface
 const mapContent = (item: any) => ({
   ...item,
@@ -53,7 +55,7 @@ export default async function HomePage() {
       <Navbar />
 
       {/* Hero — full viewport */}
-      <Hero items={allContent.length > 0 ? allContent : []} />
+      <Hero items={featured.length > 0 ? featured : allContent} />
 
       {/* Catalogue sections */}
       {allContent.length > 0 ? (

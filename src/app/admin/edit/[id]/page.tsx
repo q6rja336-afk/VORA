@@ -279,6 +279,26 @@ export default function EditContentPage() {
           </div>
         </FormSection>
 
+        <FormSection title="حالة العرض (Display Status)">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+            <FormToggle 
+              label="عرض في قسم الهيرو (Featured)" 
+              checked={formData.is_featured} 
+              onChange={(v: boolean) => setFormData({...formData, is_featured: v})} 
+            />
+            <FormToggle 
+              label="وصل حديثاً (New Arrival)" 
+              checked={formData.is_new} 
+              onChange={(v: boolean) => setFormData({...formData, is_new: v})} 
+            />
+            <FormToggle 
+              label="محتوى رائج (Trending)" 
+              checked={formData.is_trending} 
+              onChange={(v: boolean) => setFormData({...formData, is_trending: v})} 
+            />
+          </div>
+        </FormSection>
+
         <FormSection title="المزامنة الذكية (TMDB)">
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '16px' }}>
             <FormInput 
@@ -425,6 +445,34 @@ function FormInput({ label, icon, value, onChange, type = 'text', required = fal
           style={{ ...inputStyle, paddingRight: icon ? '44px' : '16px' }}
         />
       </div>
+    </div>
+  );
+}
+
+function FormToggle({ label, checked, onChange }: { label: string, checked: boolean, onChange: (v: boolean) => void }) {
+  return (
+    <div 
+      onClick={() => onChange(!checked)}
+      style={{ 
+        display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', 
+        background: checked ? 'rgba(79, 97, 255, 0.1)' : 'rgba(255, 255, 255, 0.03)',
+        border: `1px solid ${checked ? 'rgba(79, 97, 255, 0.3)' : 'rgba(255, 255, 255, 0.08)'}`,
+        borderRadius: '16px', cursor: 'pointer', transition: 'all 0.3s'
+      }}
+    >
+      <div style={{ 
+        width: '40px', height: '24px', background: checked ? 'var(--primary)' : 'rgba(255,255,255,0.1)', 
+        borderRadius: '20px', position: 'relative', transition: 'background 0.3s'
+      }}>
+        <motion.div 
+          animate={{ x: checked ? -18 : -2 }}
+          style={{ 
+            width: '18px', height: '18px', background: '#fff', borderRadius: '50%', 
+            position: 'absolute', top: '3px', right: '2px'
+          }} 
+        />
+      </div>
+      <span style={{ fontSize: '14px', fontWeight: '600', color: checked ? '#fff' : 'var(--on-surface-variant)' }}>{label}</span>
     </div>
   );
 }
