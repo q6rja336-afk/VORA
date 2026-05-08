@@ -116,6 +116,7 @@ export async function getWatchlist(userId: string): Promise<string[]> {
 // ── Profiles & Auth ──────────────────────────────────────────────────────────
 
 export async function getProfile(userId: string) {
+  if (!isConfigured) return null;
   const { data, error } = await supabase
     .from('profiles')
     .select('*')
@@ -129,6 +130,7 @@ export async function getProfile(userId: string) {
 // ── Content Management (Admin) ────────────────────────────────────────────────
 
 export async function getAllContent() {
+  if (!isConfigured) return [];
   const { data, error } = await supabase
     .from('content')
     .select('*')
@@ -139,6 +141,7 @@ export async function getAllContent() {
 }
 
 export async function addContent(content: any) {
+  if (!isConfigured) return null;
   const { data, error } = await supabase
     .from('content')
     .insert([content])
@@ -149,6 +152,7 @@ export async function addContent(content: any) {
 }
 
 export async function updateContent(id: string, updates: any) {
+  if (!isConfigured) return null;
   const { data, error } = await supabase
     .from('content')
     .update(updates)
@@ -160,6 +164,7 @@ export async function updateContent(id: string, updates: any) {
 }
 
 export async function deleteContent(id: string) {
+  if (!isConfigured) return;
   const { error } = await supabase
     .from('content')
     .delete()
